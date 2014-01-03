@@ -1,0 +1,44 @@
+192.168.0.112
+sudo apt-get install vsftpd
+#禁止匿名访问
+anonymous_enable=YES
+mkdir -p /home/test
+useradd test -g ftp -d /home/test -s /sbin/nologin
+passwd test 123456.com
+#禁止匿名访问
+anonymous_enable=NO
+#接受本地用户
+local_enable=YES
+#可以上传
+write_enable=YES
+#启用在chroot_list_file的用户只能访问根目录
+chroot_list_enable=YES
+chroot_list_file=/etc/vsftpd.chroot_list
+在/etc/vsftpd.chroot_list添加受访问目录限制的用户：
+
+echo "test" >> /etc/vsftpd.chroot_list
+启用了chroot的话，根目录要设置为不可写
+
+chmod a-w /home/test
+
+
+在 /etc/shells 最后一行添加“/sbin/nologin”
+
+“500 OOPS: vsftpd: refusing to run with writable root inside chroot()”
+
+启用了chroot的话，根目录要设置为不可写
+xferlog_file=/var/log/vsftpd.log
+ftpd_banner=<message> :设置用户连接服务器后的显示信息，就是欢迎信息
+sudo chmod 777 file
+
+
+
+sudo chmod 600 ××× （只有所有者有读和写的权限）
+ 
+sudo chmod 644 ××× （所有者有读和写的权限，组用户只有读的权限）
+ 
+sudo chmod 700 ××× （只有所有者有读和写以及执行的权限）
+ 
+sudo chmod 666 ××× （每个人都有读和写的权限）
+ 
+sudo chmod 777 ××× （每个人都有读和写以及执行的权限
