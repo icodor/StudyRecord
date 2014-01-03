@@ -25,3 +25,30 @@ git remote add origin https://github.com/username/Hello-World.git
 
 git push origin master
 # Sends your commits in the "master" branch to GitHub
+
+Step 1: Fork the "Spoon-Knife" repository
+
+Step 2: Clone your fork
+git clone https://github.com/username/Spoon-Knife.git
+# Clones your fork of the repository into the current directory in terminal
+
+
+Step 3: Configure remotes
+cd Spoon-Knife
+# Changes the active directory in the prompt to the newly cloned "Spoon-Knife" directory
+git remote add upstream https://github.com/octocat/Spoon-Knife.git
+# Assigns the original repository to a remote called "upstream"
+git fetch upstream
+# Pulls in changes not present in your local repository, without modifying your files
+
+Push commits
+git push origin master
+# Pushes commits to your remote repository stored on GitHub
+
+
+Pull in upstream changes
+git fetch upstream
+# Fetches any new changes from the original repository
+git merge upstream/master
+# Merges any changes fetched into your working files
+
